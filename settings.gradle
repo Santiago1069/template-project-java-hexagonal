@@ -1,0 +1,5 @@
+rootProject.name = 'evertec'
+
+include ':dominio'
+include ':aplicacion'
+include ':infraestructura'

@@ -1,0 +1,63 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+group ''
+version '1.0-SNAPSHOT'
+
+allprojects {
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+    tasks.withType(Test) { systemProperty "file.encoding", "UTF-8" }
+
+    project.ext.junit4 = ["junit:junit:4.12"]
+    project.ext.mockito = ['org.mockito:mockito-all:1.10.19']
+
+    project.ext.springboottest = [
+        "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    ]
+    project.ext.springbootweb = [
+        "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    ]
+    project.ext.springbootundertow = [
+        "org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}"
+    ]
+    project.ext.inject = ["javax.inject:javax.inject:1"]
+    project.ext.springbootjdbc = [
+        "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"
+    ]
+    project.ext.h2 = ["com.h2database:h2:1.4.194"]
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(
+            "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        )
+    }
+}
+
+dependencies {
+    configurations {
+        runtime.exclude module: 'spring-boot-starter-tomcat'
+        compile.exclude module: 'spring-boot-starter-tomcat'
+    }
+    compile project.ext.springbootweb
+    implementation project.ext.springbootundertow
+    implementation project(':infraestructura')
+}
+
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,8 @@
+version: V1.0
+
+server:
+  port: 8090
+  servlet:
+    session:
+      timeout: 21600s
+    contextPath: /api
