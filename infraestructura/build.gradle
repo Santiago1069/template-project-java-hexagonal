@@ -5,5 +5,12 @@ version = '0.0.1'
 sourceCompatibility = '11'
 
 dependencies {
+
+    implementation project.ext.springdata
+
     compile project.ext.springbootweb
+    compile project.ext.apachecommons
+    compile project.ext.springbootjdbc
+
+
 }

@@ -1,4 +1,4 @@
-rootProject.name = 'evertec'
+rootProject.name = 'applicationname'
 
 include ':dominio'
 include ':aplicacion'

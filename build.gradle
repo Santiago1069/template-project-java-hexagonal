@@ -8,6 +8,7 @@ allprojects {
 
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
@@ -30,6 +31,15 @@ allprojects {
         "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"
     ]
     project.ext.h2 = ["com.h2database:h2:1.4.194"]
+
+    project.ext.apachecommons = [
+            "commons-io:commons-io:2.6",
+            "org.apache.commons:commons-lang3:3.7"
+    ]
+
+    project.ext.springdata = ["org.springframework.data:spring-data-jdbc:1.1.13.RELEASE"]
+    project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
+
 }
 
 buildscript {
@@ -48,8 +58,11 @@ dependencies {
         runtime.exclude module: 'spring-boot-starter-tomcat'
         compile.exclude module: 'spring-boot-starter-tomcat'
     }
+
     compile project.ext.springbootweb
     implementation project.ext.springbootundertow
+
+    implementation (group: 'com.oracle', name: 'ojdbc6', version: '11.2.0.3')
     implementation project(':infraestructura')
 }
 
