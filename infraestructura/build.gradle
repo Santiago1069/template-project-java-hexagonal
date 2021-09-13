@@ -12,5 +12,12 @@ dependencies {
     compile project.ext.apachecommons
     compile project.ext.springbootjdbc
 
+    implementation project.ext.rabbit
+    compileOnly project.ext.lombok
+    annotationProcessor project.ext.lombok
+
+    implementation project(':dominio')
+    implementation project(':aplicacion')
+
 
 }

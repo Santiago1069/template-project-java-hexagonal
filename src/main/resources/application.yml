@@ -20,3 +20,8 @@ spring:
   datasource:
     hikari:
       poolName: poolHikari
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+    virtual-host: ${RABBITMQ_VH:/}

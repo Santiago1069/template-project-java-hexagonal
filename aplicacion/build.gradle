@@ -6,4 +6,8 @@ sourceCompatibility = '11'
 
 dependencies {
 
+    implementation project.ext.inject
+
+    implementation project(':dominio')
+
 }

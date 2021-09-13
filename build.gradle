@@ -40,6 +40,9 @@ allprojects {
     project.ext.springdata = ["org.springframework.data:spring-data-jdbc:1.1.13.RELEASE"]
     project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
 
+    project.ext.rabbit = ["org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"]
+    project.ext.lombok = ["org.projectlombok:lombok:1.18.10"]
+
 }
 
 buildscript {
@@ -64,6 +67,7 @@ dependencies {
 
     implementation (group: 'com.oracle', name: 'ojdbc6', version: '11.2.0.3')
     implementation project(':infraestructura')
+    implementation project.ext.rabbit
 }
 
 compileJava.options.encoding = 'UTF-8'
